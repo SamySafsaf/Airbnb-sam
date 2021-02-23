@@ -12,6 +12,7 @@ import {
 import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
 import { Entypo } from "@expo/vector-icons";
 import axios from "axios";
+import { CirclesLoader, TextLoader } from "react-native-indicator";
 
 export default function SignInScreen({ setToken }) {
     const navigation = useNavigation();
@@ -22,6 +23,7 @@ export default function SignInScreen({ setToken }) {
     const [hide, setHide] = useState(true);
     const [disabled, setDisabled] = useState(false);
     const [data, setData] = useState(null);
+    const [loading, setLoading] = useState(true);
 
     const handleSignIn = async () => {
         try {
@@ -99,6 +101,11 @@ export default function SignInScreen({ setToken }) {
                 )}
             </View>
             <Text>{change}</Text>
+            {loading && (
+                <View>
+                    <CirclesLoader />
+                </View>
+            )}
             <Button
                 title="Sign in"
                 onPress={handleSignIn}

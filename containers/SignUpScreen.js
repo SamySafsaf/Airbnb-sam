@@ -58,8 +58,6 @@ export default function SignUpScreen({ setToken }) {
                     },
                 }
             );
-            setDisabled(false);
-
             setData(response.data);
             setDisabled(false);
             alert("Registered Successfully");
